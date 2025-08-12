@@ -102,10 +102,25 @@ footer a.btn-outline-warning:hover {
     color: #343a40 !important;
 }
 
+/* Estilos para el Modal Pop-up */
+#contactModal .modal-header {
+    border-bottom: none;
+}
+
+#contactModal .modal-footer {
+    border-top: none;
+}
+
+#contactModal .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+    font-weight: bold;
+}
+
 /* Responsive adjustments for product carousel on mobile */
 @media (max-width: 767px) {
     #product-carousel .d-none.d-md-block {
         display: none !important;
     }
 }
-
