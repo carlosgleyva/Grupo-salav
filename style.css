@@ -102,21 +102,56 @@ footer a.btn-outline-warning:hover {
     color: #343a40 !important;
 }
 
-/* Estilos para el Modal Pop-up */
+/* Estilos para el Modal Pop-up de Avi */
+#contactModal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    overflow: hidden; /* Evita que los bordes del header se salgan */
+}
+
 #contactModal .modal-header {
+    background: #0A2540; /* Azul oscuro de la imagen */
+    color: white;
     border-bottom: none;
 }
 
+#contactModal .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+#contactModal .modal-body {
+    padding: 2rem;
+}
+
 #contactModal .modal-footer {
-    border-top: none;
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 #contactModal .btn-warning {
-    background-color: #ffc107;
-    border-color: #ffc107;
-    color: #212529;
+    background-color: #FFB74D; /* Naranja/amarillo de la imagen */
+    border-color: #FFB74D;
+    color: #0A2540; /* Texto azul oscuro */
     font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    transition: transform 0.2s ease;
 }
+
+#contactModal .btn-warning:hover {
+    transform: scale(1.05);
+}
+
+.avi-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #FFB74D;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
 
 /* Responsive adjustments for product carousel on mobile */
 @media (max-width: 767px) {
