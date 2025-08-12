@@ -36,7 +36,7 @@
                         <a class="nav-link" href="#productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">Nosotros</a>
+                        <a id="nav-nosotros" class="nav-link" href="nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contacto">Contacto</a>
@@ -234,9 +234,70 @@
         </div>
     </footer>
 
+    <!-- INICIO: Modal Pop-up -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100" id="contactModalLabel">
+                        <i class="fas fa-headset text-warning me-2"></i>¿Necesitas Ayuda?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Vimos que te interesa conocer más sobre nosotros.</p>
+                    <p class="lead">¿Te gustaría hablar con un asesor ahora mismo?</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="accept-contact" class="btn btn-warning">Sí, contactar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: Modal Pop-up -->
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- INICIO: Script para el Pop-up -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nosotrosLink = document.getElementById('nav-nosotros');
+            const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+            const acceptButton = document.getElementById('accept-contact');
+
+            // 1. Poner la 'bandera' cuando el usuario hace clic en "Nosotros"
+            if (nosotrosLink) {
+                nosotrosLink.addEventListener('click', function(event) {
+                    // Prevenimos la navegación inmediata para asegurar que se guarde la bandera
+                    event.preventDefault();
+                    // Guardamos la bandera en la sesión del navegador
+                    sessionStorage.setItem('visitedNosotros', 'true');
+                    // Continuamos con la navegación a la página "nosotros.html"
+                    window.location.href = this.href;
+                });
+            }
+            
+            // 2. Revisar si la 'bandera' existe al cargar la página principal
+            if (sessionStorage.getItem('visitedNosotros') === 'true') {
+                // Si la bandera existe, mostramos el pop-up
+                contactModal.show();
+                // Una vez mostrado, removemos la bandera para que no aparezca de nuevo si se recarga la página
+                sessionStorage.removeItem('visitedNosotros');
+            }
+
+            // 3. Definir la acción del botón "Aceptar" del pop-up
+            if (acceptButton) {
+                acceptButton.addEventListener('click', function() {
+                    // Redirigir al usuario de vuelta a la página de nosotros
+                    window.location.href = 'nosotros.html';
+                });
+            }
+        });
+    </script>
+    <!-- FIN: Script para el Pop-up -->
+
 </body>
 </html>
-
